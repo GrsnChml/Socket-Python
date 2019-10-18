@@ -1,6 +1,9 @@
 # importing socket module 
 import socket 
 import MySQLdb
+import datetime 
+import pytz 
+
   
 conn = MySQLdb.connect(host= "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com",
                   user="admin",
@@ -8,6 +11,8 @@ conn = MySQLdb.connect(host= "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com"
                   db="robot_db")
 
    
+current_time = datetime.datetime.now(pytz.timezone('America/Guatemala')) 
+
 
 UDP_IP = "192.241.219.11"
 UDP_PORT = 50012
@@ -25,7 +30,7 @@ def sendDataToDataBase(longitud,latitud,velocidad):
         print(longitud)
         print(latitud)
         print(velocidad)
-        x.execute("""INSERT INTO trama VALUES (null,%s,%s,%s,Now())""",(latitud,longitud,velocidad));
+        x.execute("""INSERT INTO trama VALUES (null,%s,%s,%s,%s)""",(latitud,longitud,velocidad,current_time));
         print("success");
         conn.commit();
         conn.close();
