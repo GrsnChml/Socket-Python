@@ -9,7 +9,7 @@ conn = MySQLdb.connect(host= "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com"
 
    
 
-UDP_IP = "192.168.0.105"
+UDP_IP = "192.241.219.11"
 UDP_PORT = 50012
   
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
