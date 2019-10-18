@@ -4,9 +4,8 @@ UDP_IP = "3.15.164.75"
 UDP_PORT = 50012
   
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
-sock.bind((UDP_IP, UDP_PORT)) 
+sock.bind((UDP_IP, UDP_PORT)) ;
 ​
-variable = ""
 ​
 def stripped(s):
     return "".join(i for i in s if 31 < ord(i) < 127)
