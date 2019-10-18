@@ -7,9 +7,9 @@ conn = MySQLdb.connect(host= "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com"
                   passwd="1234abcd",
                   db="robot_db")
 
-x = conn.cursor()   
+   
 
-UDP_IP = "3.15.164.75"
+UDP_IP = "192.168.0.105"
 UDP_PORT = 50012
   
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
@@ -21,12 +21,18 @@ def stripped(s):
 
 def sendDataToDataBase(longitud,latitud,velocidad):
     try:
-        x.execute("""INSERT INTO trama VALUES (null,'%s','%s','%s',Now())""",(latitud,longitud,velocidad));
+        x = conn.cursor()
+        print(longitud)
+        print(latitud)
+        print(velocidad)
+        x.execute("""INSERT INTO trama VALUES (null,%s,%s,%s,Now())""",(latitud,longitud,velocidad));
         print("success");
         conn.commit();
-    except:
+        conn.close();
+    except Exception as error:
         conn.rollback();
-        print("error");
+        print("error " + error);
+        conn.close();
 
   
 while True: 
@@ -34,8 +40,5 @@ while True:
     data = stripped(data.decode('utf-8')).strip()
     data1 = data.split(',')
     sendDataToDataBase(data1[11],data1[12],data1[19]);
-    print ("", data1);
     break;
 
-
-conn.close();
