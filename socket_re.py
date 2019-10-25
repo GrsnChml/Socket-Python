@@ -5,10 +5,10 @@ import datetime
 import pytz 
 
 # TODO: no exponer datos de cuentas y conexiones, ya que es un repositorio publico.
-db_host = "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com"
-db_user = "admin"
-db_password = "1234abcd"
-db_database = "robot_db"
+db_host = " "
+db_user = " "
+db_password = " "
+db_database = " "
 
 UDP_IP = "192.168.0.105"
 UDP_PORT = 50012
