@@ -4,17 +4,16 @@ import MySQLdb
 import datetime 
 import pytz 
 
-conn = MySQLdb.connect(host= "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com",
-                  user="admin",
-                  passwd="1234abcd",
-                  db="robot_db")
-
-   
-
+# TODO: no exponer datos de cuentas y conexiones, ya que es un repositorio publico.
+db_host = "spaceapp.ch7oeqwewnpa.us-west-2.rds.amazonaws.com"
+db_user = "admin"
+db_password = "1234abcd"
+db_database = "robot_db"
 
 UDP_IP = "192.168.0.105"
 UDP_PORT = 50012
-  
+
+conn = MySQLdb.connect(host=db_host, user=db_user, passwd=db_password, db=db_database)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
 sock.bind((UDP_IP, UDP_PORT)) 
 x = conn.cursor()
